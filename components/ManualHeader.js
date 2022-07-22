@@ -5,20 +5,15 @@ import { useMoralis } from "react-moralis"
 
 // Top navbar
 export default function ManualHeader() {
-    const { enableWeb3, isWeb3Enabled, isWeb3EnableLoading, account, Moralis, deactivateWeb3 } =
-        useMoralis()
+    const { enableWeb3, isWeb3Enabled, isWeb3EnableLoading, account, Moralis, deactivateWeb3 } = useMoralis()
 
     useEffect(() => {
-        if (
-            !isWeb3Enabled &&
-            typeof window !== "undefined" &&
-            window.localStorage.getItem("connected")
-        ) {
+        if (!isWeb3Enabled && typeof window !== "undefined" && window.localStorage.getItem("connected")) {
             enableWeb3()
             // enableWeb3({provider: window.localStorage.getItem("connected")}) // add walletconnect
         }
     }, [isWeb3Enabled])
-    // no array, run on every render 
+    // no array, run on every render
     // empty array, run once
     // dependency array, run when the stuff in it changesan
 
